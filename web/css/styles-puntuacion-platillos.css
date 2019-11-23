@@ -1,0 +1,110 @@
+body {
+    background-color: black !important;
+}
+
+.title-puntuar {
+    color: white;
+    text-align: center;
+}
+
+.content-platillo {
+    display: flex !important;
+    flex-direction: row;
+    justify-content: center;
+    padding: 40px;
+}
+
+.stars {
+    margin-top: -25px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.star {
+    text-align: center;
+    width: 60px;
+    height: 60px;
+    background-color: transparent;
+    background-image: url('imagenes/star-gris.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: .3s ease-in-out;
+}
+
+.star:hover {
+    background-image: url('imagenes/star.png');
+}
+
+.rating {
+  display: inline-block;
+  position: relative;
+  height: 50px;
+  line-height: 50px;
+  font-size: 50px;
+}
+
+.rating label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  cursor: pointer;
+}
+
+.rating label:last-child {
+  position: static;
+}
+
+.rating label:nth-child(1) {
+  z-index: 5;
+}
+
+.rating label:nth-child(2) {
+  z-index: 4;
+}
+
+.rating label:nth-child(3) {
+  z-index: 3;
+}
+
+.rating label:nth-child(4) {
+  z-index: 2;
+}
+
+.rating label:nth-child(5) {
+  z-index: 1;
+}
+
+.rating label input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
+.rating label .icon {
+  float: left;
+  color: transparent;
+  transition: .15s ease-in-out;
+}
+
+.rating label:last-child .icon {
+  color: #eee;
+}
+
+.rating:not(:hover) label input:checked ~ .icon,
+.rating:hover label:hover input ~ .icon {
+  color: #ff0;
+}
+
+.rating label input:focus:not(:checked) ~ .icon:last-child {
+  color: #000;
+  text-shadow: 0 0 5px #09f;
+}
+
+.indicadores {
+    top: 515px;
+}

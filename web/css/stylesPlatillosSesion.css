@@ -1,0 +1,184 @@
+.precio-platillo {
+    width: fit-content !important;
+    position: absolute !important;
+    right: 5px;
+    top: 2px;
+    font-size: 0.9rem !important;
+}
+
+.title-platillo {
+    font-size: 1.0rem !important;
+}
+
+.btn-platillo-sesion {
+    cursor: pointer;
+    color: white !important;
+    position: absolute;
+    bottom: 10px;
+    text-align: center;
+    left: 65px;
+}
+
+.puntuaciones {
+    position: absolute;
+    bottom: 50px;
+    left: 40px;
+}
+
+.shutdown {
+    cursor: pointer;
+    height: 30px;
+    position: absolute;
+    right: 5px;
+    top: 13px;
+}
+
+.shutdown:hover {
+    filter: brightness(110%);
+    transform: scale(1.05, 1.05);
+}
+
+.display-platillos {
+    max-height: 10000px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+@media screen and (min-height: 500px) {
+    .display-platillos {
+        max-height: 560px;
+    }
+}
+
+@media screen and (min-height: 700px) {
+    .display-platillos {
+        max-height: 615px;
+    }
+}
+
+@media screen and (min-height: 800px) {
+    .display-platillos {
+        max-height: 710px;
+    }
+}
+
+.btn-collapse {
+    position: absolute;
+    border-radius: 4px;
+    color: snow;
+    background-color: #333;
+    padding: 10px;
+    border: none;
+    top: 5px;
+    left: 5px;
+}
+
+.close-aside {
+    position: fixed;
+    top: 60px;
+    left: 20%;
+    color: black;
+    font-size: 24px;
+    text-decoration: none;
+}
+
+.none {
+    display: none !important;
+}
+
+.close-aside:hover {
+    transform: scale(1.1, 1.1);
+    color: #444;
+    text-decoration: none;
+}
+
+#sidebarCategorias {
+    /*transition: width .6s;*/
+}
+
+.ver-orden {
+    cursor: pointer;
+    float: right;
+}
+
+.ver-orden:hover {
+    transform: scale(1.1, 1.1);
+}
+
+.btn-agregar-orden {
+    cursor: pointer;
+    position: absolute !important;
+    top: 30px;
+    right: 25px;
+}
+
+.btn-agregar-orden img:hover {
+    filter: brightness(110%);
+}
+
+.btn-agregar-orden-deshabilitado {
+    background-color: transparent;
+    border: none;
+    cursor: not-allowed;
+    position: absolute !important;
+    top: 30px;
+    right: 25px;
+}
+
+.btn-agregar-orden-deshabilitado {
+    filter: brightness(90%);
+}
+
+.icon-view {
+    color: #333 !important;
+}
+
+.icon-view:hover {
+    text-decoration: none !important;
+    color: #444 !important;
+}
+
+.input-hidden {
+  position: absolute;
+  left: -9999px;
+}
+
+input[type=radio]:checked + label>img {
+  border: 1px solid #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 4px 4px #090;
+}
+
+.mesero-sesion-cliente {
+    color: white;
+    margin-top: 12px;
+    position: absolute;
+    margin-left: 10px;
+}
+
+.refresh {
+    float: right !important; 
+}
+
+.refresh:hover {
+    color: #fff !important;
+    background-color: transparent !important;
+    transform: scale(1.15, 1.15);
+}
+
+.container-pago {
+    background-color: white !important;
+    max-width: 540px !important; 
+    margin-top: 15px;
+}
+
+.acercaDe:hover {
+    background-color: orange !important;
+    color: white !important;
+}
+
+@media screen and (max-width: 560px) {
+    .container-pago {
+         max-width: 480px !important;
+    }
+}

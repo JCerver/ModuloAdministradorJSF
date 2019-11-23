@@ -1,0 +1,45 @@
+.content-mesero {
+    position: relative;
+    background-color: #fdfdfd;
+    padding: 10px 25px !important;
+    border: 4px solid black;
+    border-radius: 12px;
+    max-height: 545px;
+    overflow-y: auto;
+}
+
+.lista-platillos-orden-mesero {
+    background-color: #ccc;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex-flow: row;
+    border: 1px solid #ccc;
+    padding: 15px 10px;
+    border-radius: 8px;
+    overflow-x: auto;
+}
+
+.elemento-lista-orden-mesero {
+    margin-right: 5px;
+    background-color: #fff;
+    position: relative;
+    text-align: center;
+    padding: 5px;
+    border: 2px solid #aaa;
+    border-radius: 6px;
+    min-width: 170px;
+    width: 170px;
+    height: 150px;
+    min-height: 150px;
+    overflow: hidden;
+}
+
+.cantidad-elemento-lista {
+    font-size: 12px;
+    font-weight: 600;
+    color: red;
+    position: absolute;
+    top: -2px;
+    left: 1px;
+}

@@ -1,0 +1,360 @@
+body.login {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    background-image: url(imagenes/res_background.jpg);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    height: 100%;
+    background-size: cover;    
+    background-repeat: no-repeat;
+}
+
+div.title {
+    text-align: center; 
+    margin-top: 30px;
+    background-image: none;    
+}
+
+div.formulario {
+    position: absolute;
+    left: 5%;
+    top: 30px;
+    background-color: white;
+    padding: 20px 25px;
+    margin: 0px 75px;
+    border-radius: 5px;
+    box-shadow: 11px 11px 30px black;
+}
+
+div.login-container {
+    background-color: rgba(0, 0, 30, 0.65);
+    border-radius: 30px;
+    border: 2px solid window;
+    box-shadow: 0px 0px 68px black;
+    padding: 10px;
+    width: 45%;
+    min-width: 320px;
+    max-width: 400px;
+    margin-top: -2rem;
+}
+
+table.form-login {
+    /*  background-color: rgba(120, 120, 255, 0.35);*/
+    border-right: 15px;
+    width: 100%;
+}
+
+.login-sign-in {
+    text-align: right;
+    margin-top: 40px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.85);
+    padding: 5px 15px;
+    border-radius: 9px;
+}
+
+img.image-user {
+    /*position: absolute;*/
+    margin-top: 30px; 
+    margin-bottom: 30px;
+    width: 100px;
+    height: 100px;
+}
+
+img.image-admin {
+    border-radius: 50%;
+}
+
+.none {
+    display: none;
+}
+
+.tablero {
+    margin: 10px 15px;
+    padding: 10px;
+    background-color: rgba(155, 155, 155, 0.4);
+    border-radius: 12px;
+}
+
+input[type=checkbox] {
+  -ms-transform: scale(2); /* IE */
+  -moz-transform: scale(2); /* FF */
+  -webkit-transform: scale(2); /* Safari and Chrome */
+  -o-transform: scale(2); /* Opera */
+  padding: 10px;
+}
+
+.checkboxtext {
+  font-size: 110%;
+  display: inline;
+}
+
+.backContainer {
+    position: fixed;
+    top: 30px;
+    left: 30px
+}
+
+.back {
+    background-color: rgba(255, 255, 255, 0.85);
+    background-image: url(imagenes/back.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    /*margin: 20px;*/
+    width: 75px;
+    height: 75px;
+    border: 2px solid red;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.back:hover {
+    background-color: rgba(255, 255, 255, 1);    
+    -webkit-filter: brightness(120%);
+    filter: brightness(120%);
+    transform: scale(1.025);
+}
+
+.back:focus {
+    outline: none;
+    transform: scale(1.1);
+}
+
+.menu{
+    z-index: 1000;
+    position: fixed;
+    left: 175px;
+    top: 60px;
+    bottom: 0px;
+    margin-left: -175px;
+    overflow-y: auto;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    background-color: white;
+    background-image: url(imagenes/menuBackground2.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 5px;
+    padding: 12px;
+    width: 23%;
+    overflow-x: hidden;
+}
+
+.menuAdmin{
+    z-index: 1000;
+    position: fixed;
+    left: 175px;
+    top: 60px;
+    bottom: 0px;
+    margin-left: -175px;
+    overflow-y: auto;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    background-color: white;
+    /*background-image: url(imagenes/menuBackground2.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;*/
+    border-radius: 5px;
+    padding: 12px;
+    width: 23%;
+    overflow-x: hidden;
+}
+
+.logo {
+    position: relative;
+    margin-top: -90px;
+    margin-left: -40px;
+    width: 300px;
+    height: 200px;
+    background-image: url(imagenes/logo.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+div.platillos {
+    background-color: #eef;
+    border-radius: 5px;
+    padding: 15px;
+    overflow-y: auto;
+    margin: 0px 10px 0px -20px;
+}
+
+div.pedidos {
+    background-color: #e2e3e5;
+    /*background-image: url(imagenes/menu1.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;*/
+    border-radius: 5px;
+    border: 3px solid transparent;
+    padding: 30px 10px 30px 30px;
+}
+
+ul.menuI {
+    margin-top: 50px;
+    background-color: snow;
+    border-radius: 10px;
+    color: snow;
+}
+
+#menuCliente {
+    margin-top: 50px;
+}
+.item {
+    background-color: #ececf6;
+    color: black;
+    border: 1px solid black;
+    text-align: left;
+    /*border-radius: 5px;*/
+}
+
+.active, .item:hover {
+    background-color: orange;
+    color: snow;
+}
+
+.item:focus {
+    background-color: orange;
+    color: snow;
+    outline: none;
+}
+
+.font-smallN {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.font-small {
+    font-size: 11px;
+}
+
+.platillo {
+    margin: 8px 2px 10px 5px;
+    width: 150px;
+}
+
+.submenu {
+    margin-bottom: 10px;
+    background-color: orange;
+    color: white;
+    text-align: center;
+    border: 1px solid white;
+}
+
+.misPedidos {
+    height: 100px;
+    padding: 3px;
+    margin: 10px 2px 5px 2px;
+    text-align: center;
+}
+
+.contentTable {
+    font-size: 12px;
+    max-height: 300px;
+    overflow-x: auto;
+}
+
+#btnPagar {
+    cursor: not-allowed;
+}
+
+.cantidad {
+    margin-left: 1px !important;
+}
+
+.precio {
+    margin-top: 4px;
+    color: red;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.tabla-agregar-platillo {
+    vertical-align: top;
+}
+
+.puntajePlatillo {
+    color: black;
+}
+
+.heead {
+  z-index: 9;
+  /*overflow: hidden;*/
+  background-color: orange;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.heead a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.heead a:hover {
+    text-decoration: none;
+  background: #ddd;
+  color: black;
+}
+
+.heead .username {
+    float: right;
+    color: #f2f2f2;
+    padding: 14px 16px;
+    font-size: 17px;
+}
+
+.heead .links {
+    float: left;
+    color: #f2f2f2;
+    padding: 14px 16px;
+    font-size: 17px;
+}
+
+.error-text {
+    color: red;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+@media screen and (max-width: 650px) {
+    div.login-container {
+        margin-top: -2rem;
+    }
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #bbb; 
+    border-radius: 12px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #999;     
+  }

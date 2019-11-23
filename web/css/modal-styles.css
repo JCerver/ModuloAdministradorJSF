@@ -1,0 +1,49 @@
+.upload {
+  position: absolute;
+  top: 65px;
+  left: 180px;
+  cursor: pointer;
+}
+
+.upload img:hover {
+  filter: brightness(110%);
+}
+
+.fileUpload {
+  display: none;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5px;
+  vertical-align: top;
+  width: 40% !important;
+}
+
+@media screen and (max-width: 1050px) {
+  .container {
+    width: 45% !important;
+  }
+}
+
+@media screen and (max-width: 980px) {
+  .container {
+    width: 50% !important;
+  }
+}
+
+@media screen and (max-width: 813px) {
+  .container {
+    width: 60% !important;
+  }
+}
+
+@media screen and (max-width: 770px) {
+  .container {
+    width: 90% !important;
+  }
+}
