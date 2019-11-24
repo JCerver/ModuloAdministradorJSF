@@ -1,0 +1,11 @@
+.cont-pago {
+    width: 400px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    min-height: 400px;
+    background-color: #eee;
+    border-radius: 7px;
+    border: 1px solid #aaa;
+}

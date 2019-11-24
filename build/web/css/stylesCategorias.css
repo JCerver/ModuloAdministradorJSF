@@ -1,0 +1,56 @@
+.contCategorias {
+    width: 40%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background-color: #eee;
+    border-radius: 8px;
+    padding: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.categoria {
+    position: relative;
+    font-size: 18px;
+    display: block;
+    background-color: white;
+    background-image: url(imagenes/white.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    border: 1px solid #aaa;
+    border-radius: 10px;
+    padding: 20px 24px;
+    width: 100%;
+    margin-bottom: 10px;
+    font-weight: 600 !important;
+    
+}
+
+.maxSeccionCategorias {
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.textCategory {
+    font-size: 17px !important;
+    font-weight: 600 !important;
+}
+
+.btn-edit-cat {
+    font-size: 11px !important;
+    position: absolute;
+    bottom: 3px;
+    right: 5px;
+    border-radius: 30% !important;
+}
+
+.btn-delete-cat {
+    font-size: 11px !important;
+    position: absolute;
+    top: 3px;
+    right: 5px;
+    border-radius: 30% !important;
+}

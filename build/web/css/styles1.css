@@ -1,0 +1,141 @@
+html, body {
+    background-image: url(imagenes/main_area_b.jpg);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    height: 100%;
+    background-size: cover;    
+    background-repeat: no-repeat;
+    overflow-y: hidden; 
+}
+
+.container {
+    /*display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 7%;*/
+    margin-top: 7%;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 2px solid snow;
+    color: snow;
+    padding: 70px 40px 50px 40px;
+    text-align: center;
+    vertical-align: top;
+    border-radius: 20px;
+    /*width: 30% !important;  */  
+}
+
+.container-index {
+    width: 40%;
+    min-width: 320px;
+    max-width: 400px;
+    margin: auto;
+    margin-top: 7%;
+}
+
+.title {
+    margin-bottom: 30px;
+}
+
+.btn-login {
+    padding: .5rem 1rem;
+    font-size: 1.25rem !important;
+    line-height: 1.5;
+    border-radius: .3rem;
+    height: 80px;
+    margin-bottom: 10px;
+}
+
+/*@media screen and (max-width: 1050px) {
+    .container {
+        width: 40% !important;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .container {
+        width: 50% !important;
+    }
+}
+
+@media screen and (max-width: 690px) {
+    .container {
+        width: 60% !important;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .container {
+        width: 90% !important;
+    }
+}*/
+
+.btnAdmin {
+    cursor: pointer;
+    width: 100px;
+    /*height: 100px;*/
+    background-color: transparent;
+    border: 1px solid white;
+    border-radius: 30px;
+    outline: none;
+    background-image: url('imagenes/avatar.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.btnAdmin:hover {
+    filter: brightness(1.25);
+}
+
+.contImage {
+    display: block;
+    margin-top: 50px;
+    padding: 10px;
+}
+
+.max {
+    width: 100%;
+    text-align: center;
+}
+
+td {
+    padding: 10px 15px;
+    width: 33%;
+}
+
+.btn-image {
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+}
+
+.btn-image:hover {
+    filter: brightness(1.15);
+}
+
+.btn-image:focus {
+    transform: scale(1.01, 1.01);
+    outline: none;
+}
+
+.text-image {
+    color: white;
+    font-size: 20px;
+}
+
+.text-image:hover {
+    cursor: pointer;
+}
+
+.btn-content-image {
+    display: block; 
+    border-radius: 50%;
+    /*border: 5px solid white;*/
+}
+
+@media screen and (max-width: 400px) {
+    
+}

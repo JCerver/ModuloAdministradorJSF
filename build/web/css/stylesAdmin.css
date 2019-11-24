@@ -1,0 +1,483 @@
+body.login {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    background-image: url(imagenes/res_background.jpg);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    height: 100%;
+    background-size: cover;    
+    background-repeat: no-repeat;
+}
+
+div.title {
+    text-align: center; 
+    margin-top: 30px;
+    background-image: none;    
+}
+
+div.formulario {
+    position: absolute;
+    left: 5%;
+    top: 30px;
+    background-color: white;
+    padding: 20px 25px;
+    margin: 0px 75px;
+    border-radius: 5px;
+    box-shadow: 11px 11px 30px black;
+}
+
+div.login-container {
+    background-color: rgba(0, 0, 30, 0.65);
+    border-radius: 30px;
+    border: 2px solid white;
+    box-shadow: 0px 0px 68px black;
+    padding: 10px;
+    width: 400px;
+    margin-top: 20px;
+}
+
+table.form-login {
+    /*  background-color: rgba(120, 120, 255, 0.35);*/
+    border-right: 15px;
+    width: 100%;
+}
+
+.login-sign-in {
+    text-align: right;
+    margin-top: 40px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.85);
+    padding: 5px 15px;
+    border-radius: 9px;
+}
+
+img.image-user {
+    /*position: absolute;*/
+    margin-top: 30px; 
+    margin-bottom: 30px;
+    width: 100px;
+    height: 100px;
+}
+
+img.image-admin {
+    border-radius: 50%;
+}
+
+.none {
+    display: none;
+}
+
+.tablero {
+    margin: 10px 15px;
+    padding: 10px;
+    background-color: rgba(155, 155, 155, 0.4);
+    border-radius: 12px;
+}
+
+input[type=checkbox] {
+  -ms-transform: scale(2); /* IE */
+  -moz-transform: scale(2); /* FF */
+  -webkit-transform: scale(2); /* Safari and Chrome */
+  -o-transform: scale(2); /* Opera */
+  padding: 10px;
+}
+
+.checkboxtext {
+  font-size: 110%;
+  display: inline;
+}
+
+.back {
+    background-color: rgba(255, 255, 255, 0.85);
+    background-image: url(imagenes/back.png);
+    background-size: 90%;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 20px;
+    width: 75px;
+    height: 75px;
+    border: 2px solid red;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.back:hover {
+    background-color: rgba(255, 255, 255, 1);    
+    -webkit-filter: brightness(120%);
+    filter: brightness(120%);
+    transform: scale(1.025);
+}
+
+.back:focus {
+    outline: none;
+    transform: scale(1.1);
+}
+
+.menu{
+    z-index: 1000;
+    position: fixed;
+    left: 175px;
+    top: 60px;
+    bottom: 0px;
+    margin-left: -175px;
+    overflow-y: auto;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    background-color: white;
+    background-image: url(imagenes/menuBackground2.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 5px;
+    padding: 12px;
+    width: 23%;
+    overflow-x: hidden;
+}
+
+.menuAdmin{
+    z-index: 1000;
+    position: fixed;
+    left: 175px;
+    top: 60px;
+    bottom: 0px;
+    margin-left: -175px;
+    overflow-y: auto;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    background-color: white;
+    /*background-image: url(imagenes/menuBackground2.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;*/
+    border-radius: 5px;
+    padding: 12px;
+    width: 23%;
+    overflow-x: hidden;
+}
+
+.logo {
+    margin-top: -90px;
+    margin-left: -40px;
+    width: 300px;
+    height: 200px;
+    background-image: url(imagenes/logo.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+div.platillos {
+    position: relative;
+    background-color: #eef;
+    border-radius: 5px;
+    padding: 15px;
+    overflow-y: auto;
+    margin: 0px 10px 0px -20px;
+}
+
+div.pedidos {
+    background-color: #e2e3e5;
+    /*background-image: url(imagenes/menu1.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;*/
+    border-radius: 5px;
+    border: 3px solid darkturquoise;
+    padding: 30px 10px 30px 30px;
+}
+
+ul.menuI {
+    margin-top: 50px;
+    background-color: snow;
+    border-radius: 10px;
+    color: snow;
+}
+
+#menuCliente {
+    margin-top: 30px;
+}
+.item {
+    background-color: #dcdce6;
+    color: black;
+    border: 3px solid #fff;
+    text-align: left;
+    /*border-radius: 5px;*/
+}
+
+.active, .item:hover {
+    background-color: #111;
+    color: snow;
+}
+
+.item:focus {
+    background-color: #111;
+    color: snow;
+    outline: none;
+}
+
+.font-smallN {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.font-small {
+    font-size: 11px;
+}
+
+.platillo {
+    margin: 8px 2px 10px 5px;
+    width: 170px;
+    transition: .3s ease-in-out;
+}
+
+.submenu {
+    margin-bottom: 10px;
+    background-color: green;
+    color: white;
+    text-align: center;
+}
+
+.misPedidos {
+    height: 100px;
+    padding: 3px;
+    margin: 10px 2px 5px 2px;
+    text-align: center;
+}
+
+.contentTable {
+    font-size: 12px;
+    max-height: 300px;
+    overflow-x: auto;
+}
+
+#btnPagar {
+    cursor: not-allowed;
+}
+
+.cantidad {
+    margin-left: 1px !important;
+}
+
+.precio {
+    color: red;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.tabla-agregar-platillo {
+    vertical-align: top;
+}
+
+.puntajePlatillo {
+    color: gold;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.heead {
+  z-index: 9;
+  overflow: hidden;
+  background-color: #222;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.heead a, .heead select {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.heead select {
+    padding: 15px 0px 15px 16px;
+    margin: auto;
+    cursor: pointer;
+    border: none;
+    background-color: #222;
+}
+
+.heead select option {
+    padding: 10px;
+}
+
+.heead select:focus {
+    outline: none;
+}
+
+.heead .dropdown {
+  float: left;
+}
+
+.heead a:hover, .heead select:hover {
+  text-decoration: none;
+  background: #eee;
+  color: black;
+}
+
+.heead .username {
+    float: right;
+    color: #f2f2f2;
+    padding: 14px 16px;
+    font-size: 17px;
+}
+
+.heead .links {
+    float: left;
+    color: #f2f2f2;
+    padding: 14px 16px;
+    font-size: 17px;
+}
+
+.catalogos {
+    cursor: pointer !important;
+    position: relative;
+}
+
+.list-catalogos {
+    z-index: 9;
+    width: inherit;
+    list-style: none;
+    background-color: blue;
+    display: none;
+    position: absolute;
+    margin: auto;
+    top: 30px;
+    left: 200px;
+}
+
+.catalogos:hover .list-catalogos {
+    display: block;
+}
+
+.navbarAdmin {
+    display: block !important;
+    background-color: #111;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9;
+}
+
+.navbarAdmin > li > a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.navbarAdmin > li > a:hover {
+  text-decoration: none;
+  background: #eee;
+  color: black;
+}
+
+.navbarAdmin > li > .active{
+    text-decoration: none;
+    background: #eee;
+    color: black;
+  }
+
+.navbarAdmin > li > div a:hover {
+  color: white;
+  background-color: #222;
+}
+
+.dropdown-item img {
+    margin-top: -3px;
+}
+
+.agregarPlatillo, .agregarItem {
+    cursor: pointer;
+}
+
+.agregarPlatillo img:hover, .agregarItem img:hover {
+    filter: brightness(120%);
+    transform: scale(1.05, 1.05);
+}
+
+/* Sección cocina (clave de acceso) */
+.contClave {
+    position: relative;
+    background-color: #eee;
+    border-radius: 8px;
+    padding: 15px;
+}
+
+.chef-hat {
+    position: absolute;
+    top: -40px;
+    left: -40px;
+}
+
+.maxCategorias {
+    margin-bottom: 45px !important;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #bbb; 
+    border-radius: 12px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #999;     
+  }
+  
+  .delete-platillo {
+      background-image: url('imagenes/delete.png');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+  }
+  
+  .div-delete-platillo {
+      display: none;
+      position: absolute; 
+      top: 2px; 
+      right: 0px;
+      
+  }
+  
+  .platillo:hover .div-delete-platillo {
+      display: inline;
+  }
+  
+  .search-bar-platillos {
+      display: flex !important;
+      flex-wrap: nowrap !important;
+  }
+  
+  .toast img {
+      height: 25px;
+  }
+
+  
+  @media screen and (max-width: 400px) {
+      .menuAdmin {
+          width: 85%;
+      }
+  }
