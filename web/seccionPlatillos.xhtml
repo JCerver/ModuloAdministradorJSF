@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <h:body>
+        <div class="row" style="margin: 60px 10px; z-index: 0;">
+            <aside class="menuAdmin" style="z-index: 8;">
+                <div class="logo"></div>
+                <nav class="row navbar navbar-light">
+                    <!-- dar funcion -->
+                    <h:form class="col-12 search-bar-platillos form-inline">
+                        <h:inputText class="col-8 form-control mr-sm-2" 
+                                     a:placeholder="Buscar..." id="searchInput"
+                                     value="#{listarPlatillos.filterName}" />
+                        <h:commandButton class="col-4 btn btn-dark my-2 my-sm-0" 
+                                         id="searchButton" type="submit" 
+                                         value="Buscar" />
+                    </h:form>
+                </nav>
+                <!-- Categorías -->
+                <div id="menuCliente" class="nav flex-column menuI maxCategorias" >
+                    <!-- darle funcion -->
+                    <a class="btn btn-primary" href="/ListarCategoriasPlatillos">
+                        <i class="fas fa-cogs"></i>
+                        <span>Gestionar Categorías</span>
+                    </a>
+
+                    <h:link a:rendered="#{listarPlatillos.filter==null}"
+                            class="nav-link item active" 
+                            outcome="index.xhtml">
+                        Todos
+                    </h:link>
+                    <h:link a:rendered="#{listarPlatillos.filter!=null}"
+                            class="nav-link item " 
+                            outcome="index.xhtml">
+                        Todos
+                    </h:link>
+                    <!--Modificar outcome tiene que apuntar a platillos del dia-->
+                    <h:link a:rendered="#{listarPlatillos.filter=='platillosDelDia'}"
+                            class="nav-link item active"
+                            outcome="index.xhtml">
+                        Platillos del día
+                    </h:link>
+                    <h:link a:rendered="#{listarPlatillos.filter!='platillosDelDia'}"
+                            class="nav-link item "
+                            outcome="index.xhtml">
+                        Platillos del día
+                    </h:link>
+                    <!-- reemplazar el outcome "/SistemaRestauranteWeb/ListarPlatillos?filter=<%=categoria.getCategoria()%>" -->
+                    <c:forEach var="categoria" items="#{listarPlatillos.categorias}">
+                        <h:link class="nav-link item active" 
+                                a:rendered="#{categoria.categoria==listarPlatillos.filter}"
+                                outcome="index.xhtml">
+                            Poner Categoria
+                        </h:link>
+                    </c:forEach>
+                </div>
+            <!-- anexar faltante -->
+        </aside>
+        <div class="col-md-3"></div>
+        <!-- SECCION PLATILLOS -->
+        <div class="col-md-9 platillos">
+        <!-- ******* AGREGAR PLATILLO ********* -->
+            <div class="agregarPlatillo" 
+                data-toggle="modal" 
+                data-target="#modalAgregarPlatillo">
+                <img src="/SistemaRestauranteWeb/css/imagenes/plus.png" 
+                     height="60px" 
+                     style="position: fixed; top: 75px; right: 60px"/>
+            </div>
+            <!-- ******* / AGREGAR PLATILLO ********* -->
+            <div>
+                <h2>Platillos</h2>
+            </div>                
+            <div class="row" style="margin-left: 6px; margin-right: 70px;">
+            <c:forEach var="platillo" items="#{listarPlatillos.platillos}">
+                <h:panelGroup class="card platillo" 
+                          style="display: flex; padding: 2px; position: relative"
+                          a:rendered="#{listarPlatillos.filter=='platillosDelDia'}">
+                    <div style="position: absolute; top: 0; left: 0">
+                        <span class="badge badge-secondary">#{platillo.id}</span>
+                    </div>
+                
+                    <div class="card-img-top" style="text-align: center; padding: 10px 2px 2px 2px;">
+                        <!-- incrustar id -->
+                        <img src="#{request.contextPath}/ObtenerImagenes?id=#{platillo.id}" 
+                             width="120px" height="75px"/>
+                    </div>
+                    <div class="card-body" style="text-align: center">
+                        <h5 class="card-title font-smallN">#{platillo.nombre}</h5>
+                        <h:outputText a:rendered="#{platillo.descripcion.length()lt 36}"
+                                      class="card-text font-small">
+                            #{platillo.descripcion}
+                        </h:outputText>
+                        <h:outputText a:rendered="#{platillo.descripcion.length() gt 35}"
+                                      class="card-text font-small">
+                            #{platillo.descripcion.substring(0,35)}..
+                        </h:outputText>
+                        <div>
+                            <!-- dar funcionalidad -->
+                            <a href="/EliminarDePlatillosDelDia?idPlatillo=#{listarPlatillos.getIdPlatilloDelDia(platillo.id)}" 
+                               onclick="return confirm('¿Estás seguro de eliminar de platillos del día?');"
+                              class="btn btn-sm btn-danger btn-block">
+                              - Platillos del día
+                            </a>
+                        </div>
+                    </div>
+                </h:panelGroup>
+
+                <h:panelGroup class="card platillo" style="display: flex; padding: 2px; position: relative"
+                          a:rendered="#{listarPlatillos.filter!='platillosDelDia'}">
+                    <div style="position: absolute; top: 0; left: 0">
+                        <span class="badge badge-secondary">#{platillo.id}</span>
+                    </div>
+                    <div class="div-delete-platillo">
+                        <a 
+                            onclick="return confirm('¿Estás seguro de eliminar este platillo?')"
+                            href="/EliminarPlatillo?id=#{platillo.id}">
+                            <img src="#{request.contextPath}/css/imagenes/delete2.png" height="25px" />
+                        </a>
+                    </div>
+                    <div class="card-img-top" style="text-align: center; padding: 10px 2px 2px 2px;">
+                        <img src="#{request.contextPath}/ObtenerImagenes?id=#{platillo.id}" width="120px" height="75px" />
+                    </div>
+                    <div class="card-body" style="text-align: center">
+                        <h5 class="card-title font-smallN">#{platillo.nombre}</h5>
+                        <h:outputText a:rendered="#{platillo.descripcion.length() lt 36}"
+                                      class="card-text font-small">
+                            #{platillo.descripcion}
+                        </h:outputText>
+                        <h:outputText a:rendered="#{platillo.descripcion.length() gt 35}"
+                                      class="card-text font-small">
+                            #{platillo.descripcion.substring(0,35)}..
+                        </h:outputText>
+                        <div>
+                            <a href="/CargarDatosPlatillo?id=#{platillo.id}" 
+                              class="btn btn-sm btn-primary btn-block">
+                              Editar
+                            </a>
+                            <a a:rendered="#{listarPlatillos.esPlatilloDelDia(platillo.id)==true}"
+                                class="btn btn-sm btn-success btn-block"
+                               onclick="return confirm('¿Deseas agregar este platillo a los 9 platillos del día?');"
+                               href="/SistemaRestauranteWeb/AgregarPlatilloDeldia?idPlatillo=#{platillo.id}">
+                                <span style="font-size: 13px"><i class="fas fa-plus"></i> Platillos del día</span>
+                            </a>
+                        </div>
+                    </div>
+                </h:panelGroup>
+            </c:forEach>
+        </div>
+    </div>
+    </div>
+               
+</h:body>
+</html>

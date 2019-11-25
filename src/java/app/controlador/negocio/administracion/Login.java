@@ -6,36 +6,42 @@
 package app.controlador.negocio.administracion;
 
 import app.dao.GestorAdministradorBD;
+import beans.AdminBean;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
-import modelo.Administrador;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 
 /**
  *
  * @author Isaac Perez
  */
-@ManagedBean
+@ManagedBean(name="login")
 @RequestScoped
 public class Login {
-
+    @ManagedProperty(value="#{adminBean}")
+    private AdminBean adminBean;
     private String usuario;
     private String password;
     private String error;
     private GestorAdministradorBD gestorAdmin;
-    
+
     public Login(){
     }
 
     public String login() {
-
+        ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
         try {
             gestorAdmin = new GestorAdministradorBD();
-            Administrador administrador = gestorAdmin.getAdministradorLogin(usuario, password);
-            if (administrador.getId() > 0) {
-               return "listarPlatillos";
+            adminBean.setAdmin(gestorAdmin.getAdministradorLogin(usuario, password));
+            
+            if (adminBean.getAdmin().getId() > 0) {
+               context.redirect("index.xhtml");
             } else {
                 error = "El usuario y/o contraseña no coinciden";
                 return "login";
@@ -43,6 +49,8 @@ public class Login {
         } catch (SQLException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
         return "login";
@@ -71,5 +79,18 @@ public class Login {
     public void setError(String error) {
         this.error = error;
     }
-   
+
+    public GestorAdministradorBD getGestorAdmin() {
+        return gestorAdmin;
+    }
+
+    public void setGestorAdmin(GestorAdministradorBD gestorAdmin) {
+        this.gestorAdmin = gestorAdmin;
+    }
+
+    public void setAdminBean(AdminBean adminBean) {
+        this.adminBean = adminBean;
+    }
+
+    
 }

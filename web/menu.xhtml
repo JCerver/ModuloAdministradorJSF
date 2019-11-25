@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <ul class="nav nav-tabs navbarAdmin">
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Catálogos</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" outcome="/SistemaRestauranteWeb/ListarAdministradores">Administradores</a>
+                <a class="dropdown-item" href="/SistemaRestauranteWeb/ListarPlatillos">Platillos</a>
+                <a class="dropdown-item" href="/SistemaRestauranteWeb/ListarClientes">Clientes</a>
+                <a class="dropdown-item" href="/SistemaRestauranteWeb/ListarMeseros">Meseros</a>
+            </div>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Reportes</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="/ReportesVentas">Ventas generales</a>
+                <a class="dropdown-item" href="#{request.contextPath}/ReportesPlatillos">Platillos por ventas</a>
+                <a class="dropdown-item" href="#{request.contextPath}/ReportesPlatillosMasVendidos">Platillos más vendidos</a> 
+                <a class="dropdown-item" href="#{request.contextPath}/ReportesPlatillosPorPuntaje">Platillos por puntuación</a>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#{request.contextPath}/negocio/administracion/seccionClaveAccesoCocina.jsp">Clave de acceso cocina</a>
+        </li>
+        <li class="nav-item dropdown" style="float: right">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                <img src="#{request.contextPath}/css/imagenes/admin.PNG" height="20px" style="border-radius: 50%" />
+                    <span>#{adminBean.admin.nombre}</span>
+            </a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">
+                    <img src="#{request.contextPath}/css/imagenes/gear.png" height="15px" />
+                        Configuración
+                </a>
+                <a class="dropdown-item" href="#">
+                    <img src="#{request.contextPath}/css/imagenes/star.png" height="15px" />
+                        Algo más
+                </a>
+                <a class="dropdown-item" href="#">
+                    <img src="#{request.contextPath}/css/imagenes/plus.png" height="15px" />
+                        Ver algo
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="CerrarSesion">
+                    <img src="#{request.contextPath}/css/imagenes/logout.png" height="15px" />
+                        Cerrar sesión
+                </a>
+            </div>
+        </li>
+    </ul>
+</html>
