@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
+        <title>Login Administrador</title>
+        <link rel="stylesheet" href="#{request.contextPath}/css/styles.css"/>
+        <link rel="stylesheet" href="#{request.contextPath}/css/sizes.css"/>
+        <link rel="stylesheet" 
+              href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
+              crossorigin="anonymous" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css" />
+    </h:head>
+    <body class="login animated fadeInDown h-100v">
+        <div class="login-container ">
+            <div class="title row" style="display: inline">
+                <h2 style="color: snow">Bienvenido</h2>
+            </div>
+            <div style="width: 100%; text-align: center">
+                <img src="#{request.contextPath}/css/imagenes/admin.PNG" 
+                     class="image-admin" width="200px" height="200px" />
+            </div> 
+
+            <div class="card-body">
+                <h5 class="card-title" style="color: snow; text-align: center"> 
+                    Introduce tu usuario y contraseña</h5>
+                <h:form id="login">
+                    <table cellspacing="3" cellpadding="3" class="form-login">
+                        <tr>
+                            <td>
+                                <h:inputText styleClass="form-control" 
+                                             id="password" a:placeholder="Usuario"
+                                             value="#{login.usuario}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h:inputSecret styleClass="form-control" 
+                                             a:placeholder="Contraseña" 
+                                             class="form-control" id="password2"
+                                             value="#{login.password}" />
+                            </td>
+                        </tr>
+                    </table>     
+                    <h:commandButton value="Ingresar" type="submit" id="signin" 
+                                     class="btn btn-primary btn-block" 
+                                     style="margin-top: 10px;"
+                                     action="#{login.login()}"/>
+                    <!-- poner mensaje de error si el login no es correcto -->
+                    <h:inputHidden value="#{login.error}" a:name="errorValue" />
+                    <p class="error-text" id="error"></p>
+                </h:form>
+                
+            </div> 
+        </div>
+        <script>
+            var pass = document.getElementById("password");
+
+            pass.addEventListener("keyup", function (event) {
+                // Number 13 is the "Enter" key on the keyboard
+                if (event.keyCode === 13) {
+                    // Cancel the default action, if needed
+                    event.preventDefault();
+                    // Trigger the button element with a click
+                    document.getElementById("signin").click();
+                }
+            });
+        </script>
+        <script>
+            window.onload = function showError() {
+                var error = document.getElementById("error");
+                var errorForm = document.getElementById("login").elements;
+                error.innerHTML = errorForm["errorValue"].value;
+            };
+        </script>
+    </body>
+</html>
+
+

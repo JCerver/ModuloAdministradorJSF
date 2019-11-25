@@ -19,10 +19,10 @@ public class ConectaBD {
 
     private static String bd = "restaurante";//Nombre de la base de datos
     private String urls = "jdbc:mysql://localhost/" + bd;
-    private String usuarioDB = "root";
+    private String usuarioDB = "isaac";
     //private String usuarioDB = "fredy";
     
-    private String passwordDB = "GRANFALOCO10";
+    private String passwordDB = "";
     //public static String passwordDB = "Fredy97";
     //private String passwordDB = "";
     private Connection conexion;
@@ -42,7 +42,8 @@ public class ConectaBD {
     public void abrir() throws SQLException, ClassNotFoundException {
         conexion = null;
         Class.forName("com.mysql.jdbc.Driver");
-        conexion = DriverManager.getConnection(urls, usuarioDB, passwordDB);
+        conexion = DriverManager.getConnection("jdbc:mysql://localhost/"+bd
+                + "?autoReconnect=true&useSSL=false",usuarioDB,passwordDB);
     }
 
     public void cerrar() throws SQLException {
