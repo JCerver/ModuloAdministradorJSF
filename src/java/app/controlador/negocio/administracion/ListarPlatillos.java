@@ -72,8 +72,9 @@ public class ListarPlatillos {
     }
     public void aplicarFiltro(String filtro){
         this.filter = filtro;
-        platillos = new ArrayList();
+        platillos = null;
         if (!filtro.equals("0")) {
+            platillos = new ArrayList();
             if (filtro.equals("platillosDelDia")) {
                 System.out.println("Aplico filtrooo");
                 listaPlatillosDelDia = gestorPlatilloDelDiaBD.getPlatillosDelDia();
