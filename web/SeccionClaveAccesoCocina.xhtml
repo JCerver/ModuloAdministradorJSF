@@ -26,9 +26,9 @@
                     </span>
                 </div>
                 Escribe nueva clave:
-                <h:inputSecret value="#{managedBeanCocina.clave}"/> 
+                <h:inputSecret value="#{cocinaBean.claveAcceso}"/> 
                 <h:commandButton value="Cambiar" type="submit" styleClass="btn-primary"
-                                 action="#{managedBeanCocina.cambiarClave()}"/>
+                                 action="#{cocinaBean.CambiarClaveCocina()}"/>
             </div>
         </h:form>
     </h:body>
