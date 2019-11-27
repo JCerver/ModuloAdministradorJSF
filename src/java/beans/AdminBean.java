@@ -7,7 +7,7 @@ import modelo.Administrador;
 
 @ManagedBean(name="adminBean")
 @SessionScoped
-public class AdminBean implements Serializable{
+public class AdminBean{
     private Administrador admin;
     public AdminBean(){
     }

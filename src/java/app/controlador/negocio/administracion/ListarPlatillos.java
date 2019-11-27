@@ -4,6 +4,7 @@ import app.dao.GestorCategoriaPlatilloBD;
 import app.dao.GestorPlatilloBD;
 import app.dao.GestorPlatilloDelDiaBD;
 import beans.AdminBean;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -13,12 +14,17 @@ import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import modelo.CategoriaPlatillo;
 import modelo.Platillo;
 import modelo.PlatilloDelDia;
 
 @ManagedBean (name="listarPlatillos")
-@RequestScoped
+@SessionScoped
 public class ListarPlatillos {
 
     @ManagedProperty(value = "#{adminBean}")
@@ -33,35 +39,70 @@ public class ListarPlatillos {
     private List<CategoriaPlatillo> listaCategorias;
     
     // Para los filtros
-    private String filter = null;
+    private String filter;
     private String filterName = null;
     private String seccion;
     
-    public ListarPlatillos() {
-        
+    public ListarPlatillos()throws SQLException, ClassNotFoundException {
+        gestorPlatilloBD = new GestorPlatilloBD();
+        gestorCategoriaPlatilloBD = new GestorCategoriaPlatilloBD();
+        gestorPlatilloDelDiaBD = new GestorPlatilloDelDiaBD();
+        filter = "0";
     }
 
     public void listar() {
-        try {
-            System.out.println("Entreeeee");
-            gestorPlatilloBD = new GestorPlatilloBD();
-            gestorCategoriaPlatilloBD = new GestorCategoriaPlatilloBD();
-            gestorPlatilloDelDiaBD = new GestorPlatilloDelDiaBD();
-            
+        if (platillos == null) {
             platillos = gestorPlatilloBD.getPlatillos();
-            if (platillos != null) {
+        }
+        listaCategorias = gestorCategoriaPlatilloBD.getCategoriasPlatillos();
+        listaPlatillosDelDia = gestorPlatilloDelDiaBD.getPlatillosDelDia();
+        categorias = gestorCategoriaPlatilloBD.getCategoriasPlatillos();
+        seccion = "platillos";
+        HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
+                .getExternalContext().getSession(true);
+    }
+
+    public void buscar() throws IOException {
+        platillos = gestorPlatilloBD.getPlatillosPorNombre(filterName);
+        if(platillos.isEmpty()){
+            platillos = null;
+        }
+        categorias = gestorCategoriaPlatilloBD.getCategoriasPlatillos();
+        this.redirigir("");
+    }
+    public void aplicarFiltro(String filtro){
+        this.filter = filtro;
+        platillos = null;
+        if (!filtro.equals("0")) {
+            platillos = new ArrayList();
+            if (filtro.equals("platillosDelDia")) {
+                System.out.println("Aplico filtrooo");
                 listaPlatillosDelDia = gestorPlatilloDelDiaBD.getPlatillosDelDia();
-                categorias = gestorCategoriaPlatilloBD.getCategoriasPlatillos();
-                listaCategorias = gestorCategoriaPlatilloBD.getCategoriasPlatillos();
-                seccion = "platillos";
+                for (PlatilloDelDia platilloDelDia : listaPlatillosDelDia) {
+                    Platillo platillo = gestorPlatilloBD.getPlatillo(platilloDelDia.getIdPlatillo());
+                    platillos.add(platillo);
+                }
+            } else {
+                platillos = gestorPlatilloBD.getPlatillosPorCategoria(filter);
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(ListarPlatillos.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
+        }
+        try {
+            this.redirigir("");
+        } catch (IOException ex) {
             Logger.getLogger(ListarPlatillos.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    public void redirigir(String destino) throws IOException{
+        ExternalContext context = FacesContext.getCurrentInstance()
+                .getExternalContext();
+        if(destino.equals("")){
+            context.redirect(((HttpServletRequest) 
+                context.getRequest()).getRequestURI());
+        }else{
+           context.redirect(destino); 
+        }
+        
+    }
     public boolean esPlatilloDelDia(int id){
         for (PlatilloDelDia platilloDia : listaPlatillosDelDia) {
             if(platilloDia.getIdPlatillo() == id){

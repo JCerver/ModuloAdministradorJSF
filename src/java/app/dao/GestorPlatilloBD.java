@@ -249,7 +249,6 @@ public class GestorPlatilloBD {
             prest.setString(1, nombre);
 
             rs = prest.executeQuery();
-
             while (rs.next()) {
                 Platillo platillo = new Platillo();
                 platillo.setId(rs.getInt(1));
