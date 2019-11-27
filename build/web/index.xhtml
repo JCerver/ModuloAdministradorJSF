@@ -20,23 +20,24 @@
     <body style="background-color: #ddd">
         <f:metadata>
             <f:viewAction action="#{listarPlatillos.listar()}" />
+            <f:viewAction action="#{listarAdministradores.listar()}" />
+            <f:viewAction action="#{listarClientes.listar()}" />
+            <f:viewAction action="#{listarMeseros.listar()}" />
         </f:metadata>
         <!-- falta modificar el menu -->
         <ui:include src="menu.xhtml"  />
         <!-- Mostrar una vista segun lo deseado -->
-        <!--
-        <% if(seccion.equals("clientes")){ %>
-          <jsp:include page="/negocio/administracion/seccionClientes.jsp" />
-        <% } else if(seccion.equals("platillos")){%>
-          <jsp:include page="/negocio/administracion/seccionPlatillos.jsp" />
-        <% } else if(seccion.equals("administradores")){%>
-          <jsp:include page="/negocio/administracion/seccionAdministradores.jsp" />
-        <% } else if(seccion.equals("meseros")){%>
-          <jsp:include page="/negocio/administracion/seccionMeseros.jsp" />
-        <% }%>
-        -->
         <h:panelGroup a:rendered="#{listarPlatillos.seccion=='platillos'}">
             <ui:include src="seccionPlatillos.xhtml"/>
+        </h:panelGroup>
+        <h:panelGroup a:rendered="#{listarPlatillos.seccion=='administradores'}">
+            <ui:include src="seccionAdministradores.xhtml"/>
+        </h:panelGroup>
+        <h:panelGroup a:rendered="#{listarPlatillos.seccion=='clientes'}">
+            <ui:include src="seccionClientes.xhtml"/>
+        </h:panelGroup>
+        <h:panelGroup a:rendered="#{listarPlatillos.seccion=='meseros'}">
+            <ui:include src="seccionMeseros.xhtml"/>
         </h:panelGroup>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>

@@ -5,21 +5,17 @@
     <ul class="nav nav-tabs navbarAdmin">
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Catálogos</a>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" outcome="/SistemaRestauranteWeb/ListarAdministradores">Administradores</a>
-                <a class="dropdown-item" href="/SistemaRestauranteWeb/ListarPlatillos">Platillos</a>
-                <a class="dropdown-item" href="/SistemaRestauranteWeb/ListarClientes">Clientes</a>
-                <a class="dropdown-item" href="/SistemaRestauranteWeb/ListarMeseros">Meseros</a>
-            </div>
-        </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Reportes</a>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="/ReportesVentas">Ventas generales</a>
-                <a class="dropdown-item" href="#{request.contextPath}/ReportesPlatillos">Platillos por ventas</a>
-                <a class="dropdown-item" href="#{request.contextPath}/ReportesPlatillosMasVendidos">Platillos más vendidos</a> 
-                <a class="dropdown-item" href="#{request.contextPath}/ReportesPlatillosPorPuntaje">Platillos por puntuación</a>
-            </div>
+            <h:form class="dropdown-menu">
+                <h:commandButton class="dropdown-item" 
+                                 value="Administradores" 
+                                 action="#{listarPlatillos.cambiarSeccion('administradores')}" />
+                <h:commandButton class="dropdown-item" value="Platillos"
+                                 action="#{listarPlatillos.cambiarSeccion('platillos')}" />
+                <h:commandButton class="dropdown-item" value="Clientes"
+                                 action="#{listarPlatillos.cambiarSeccion('clientes')}" />
+                <h:commandButton class="dropdown-item" value="Meseros"
+                                 action="#{listarPlatillos.cambiarSeccion('meseros')}" />
+            </h:form>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="#{request.contextPath}/negocio/administracion/seccionClaveAccesoCocina.jsp">Clave de acceso cocina</a>

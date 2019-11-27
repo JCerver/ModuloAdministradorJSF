@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <h:body>
+        <div class="row" style="margin: 60px 10px; z-index: 0;">
+            <aside class="menuAdmin" style="z-index: 8;">
+                <div class="logo"></div>
+                <nav class="row navbar navbar-light">
+                    <h:form class="form-inline">
+                        <h:inputText class="form-control mr-sm-2" a:placeholder="Buscar..." 
+                               a:aria-label="Search" id="searchInput"  
+                               value="#{listarAdministradores.search}" />
+                        <h:commandButton class="btn btn-dark my-2 my-sm-0" 
+                                         id="searchButton" type="submit" value="Buscar"
+                                         action="#{listarAdministradores.buscar()}"/>
+                    </h:form>
+                </nav>
+            </aside>
+            <div class="col-md-3">
+            </div>
+
+            <!-- ******* AGREGAR CLIENTE ********* -->
+            <div class="agregarItem" data-toggle="modal" data-target="#modalAgregarAdministrador">
+                <img src="#{request.contextPath}/css/imagenes/plus.png" height="60px" style="position: fixed; top: 75px; right: 60px; z-index: 5;" />
+            </div>
+            <!-- ******* AGREGAR CLIENTE ********* -->
+
+            <div class="container col-md-9" style="background-color: #eee; width: 90% !important; border-radius: 15px; padding: 20px 20px; padding-top: 80px; ">
+                <div class="col-md-12">
+                    <h2>Administradores</h2>
+                    <br />
+                </div>
+                <div class="container-fluid col-md-12 ">
+                    <table class="table table-responsive" >
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre(s)</th>
+                                <th>Correo</th>
+                                <th>Usuario</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <c:forEach var="administrador" 
+                                       items="#{listarAdministradores.administradores}"
+                                       >
+                                <tr>
+                                    <td>
+                                        #{administrador.id}
+                                        
+                                    </td>
+                                    <td>
+                                        #{administrador.nombre}
+                                    </td>
+                                    <td>
+                                        #{administrador.correo}
+                                    </td>
+                                    <td>
+                                        #{administrador.usuario}
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <!-- MODIFICAR -->
+                                            <h:form>
+                                                <h:commandButton class="btn btn-sm btn-primary btn-block d-inline  "
+                                                                 action="#{listarAdministradores.editar(
+                                                                           listarAdministradores.administradores.indexOf(
+                                                                           administrador
+                                                                           )
+                                                                           )}" 
+                                                                 value="Editar"/>
+                                            </h:form>
+                                            <h:form class="btn btn-sm btn-danger btn-block d-inline">
+                                            <h:commandButton style=" border:0; background: none; color:white;"
+                                               value="Eliminar"
+                                               onclick="return confirm('¿Estás seguro de eliminar este administrador?')"
+                                               action="#{listarAdministradores.eliminar(administrador.id)}" />
+                                            </h:form>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </c:forEach>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- MODAL AGREGAR-MODIFICAR CLIENTE -->
+            <div class="modal fade" id="modalAgregarAdministrador" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <h:form class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="exampleModalCenterTitle">
+                                <span style="position: relative">
+                                    Registrar nuevo administrador
+                                    <div style="position: absolute; top: 0; right: -50px">
+                                        <span style="margin-top: 0px" class="badge badge-secondary">
+                                            1</span>
+                                    </div>
+                                </span>
+                            </h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true"></span>
+                            </button>
+                        </div>
+
+                        <div class="modal-body">
+                            <div class="row" style="padding: 5px 10px">
+                                <div class="form-group col-md-6">
+                                    <label for="nombre">Nombre</label>
+                                    <h:inputText  class="form-control" a:placeholder="Nombre" 
+                                                  id="nombre" required="true" 
+                                                  value="#{registrarAdministrador.nombre}"/>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label for="nombre">Apellidos</label>
+                                    <h:inputText class="form-control" a:placeholder="Apellidos" 
+                                                  required="true" 
+                                                  value="#{registrarAdministrador.apellidos}"/>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label for="nombre">Correo electrónico</label>
+                                    <h:inputText class="form-control" a:placeholder="Correo electrónico" 
+                                                  required="true" 
+                                                  value="#{registrarAdministrador.correo}"/>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label for="nombre">Usuario</label>
+                                    <h:inputText class="form-control" a:placeholder="Usuario" 
+                                                  required="true" 
+                                                  value="#{registrarAdministrador.usuario}"/>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label for="nombre">Contraseña</label>
+                                    <h:inputText class="form-control" a:placeholder="Contraseña" 
+                                                  required="true" 
+                                                  value="#{registrarAdministrador.password}"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            <h:commandButton value="Añadir" type="submit" class="btn btn-primary"
+                                             action="#{registrarAdministrador.registrar()}"/>
+                        </div>
+                    </h:form>
+                </div>
+            </div>
+        </div>
+    </h:body>
+</html>

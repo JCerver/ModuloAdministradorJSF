@@ -3,9 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/F:/Documentos/Escuela/para%20trabajar%20con%20proyecto/ModuloAdministradorJSF/web/index.xhtml</file>
-            <file>file:/F:/Documentos/Escuela/para%20trabajar%20con%20proyecto/ModuloAdministradorJSF/src/java/app/controlador/negocio/administracion/ListarPlatillos.java</file>
-            <file>file:/F:/Documentos/Escuela/para%20trabajar%20con%20proyecto/ModuloAdministradorJSF/web/seccionPlatillos.xhtml</file>
+            <file>file:/F:/Documentos/Escuela/para%20trabajar%20con%20proyecto/ModuloAdministradorJSF/web/seccionMeseros.xhtml</file>
+            <file>file:/F:/Documentos/Escuela/para%20trabajar%20con%20proyecto/ModuloAdministradorJSF/web/seccionClientes.xhtml</file>
+            <file>file:/F:/Documentos/Escuela/para%20trabajar%20con%20proyecto/ModuloAdministradorJSF/src/java/app/controlador/negocio/administracion/RegistrarMesero.java</file>
         </group>
     </open-files>
 </project-private>

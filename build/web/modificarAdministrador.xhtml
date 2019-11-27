@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <title>Editar administrador</title>
+            <link rel="stylesheet" href="#{request.contextPath}/css/stylesAdmin.css" />
+            <link rel="stylesheet" href="#{request.contextPath}/css/modal-styles.css" />
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+                  crossorigin="anonymous" />
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+                  crossorigin="anonymous" />
+    </head>
+    <body style="background-color: #444">
+        <f:metadata>
+            <f:viewAction action="#{actualizarAdministrador.cargar(
+                                    listarAdministradores.administradores.get(
+                                    listarAdministradores.indexAdministrador
+                                    )
+                                    )}" />
+        </f:metadata>
+        <div class="container">
+            <div>
+                <h:form class="modal-content"> 
+                    <h:inputHidden value="#{actualizarAdministrador.admin.id}" />
+                    <div class="modal-header">
+                        <h4 class="modal-title">
+                            <span style="position: relative">
+                                Editar administrador
+                                <div style="position: absolute; top: 0; right: -50px">
+                                        <span style="margin-top: 0px" class="badge badge-secondary">
+                                            #{actualizarAdministrador.admin.id} </span>
+                                </div>
+                            </span>
+                        </h4>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="row" style="padding: 5px 10px">
+                            <div class="form-group col-md-6">
+                                <label for="name">Nombre</label>
+                                <h:inputText class="form-control" a:placeholder="Nombre" id="name" 
+                                             value="#{actualizarAdministrador.admin.nombre}" 
+                                             required="true" />
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="email">Correo electrónico</label>
+                                <h:inputText a:type="email" class="form-control" a:placeholder="Correo electrónico" id="email" 
+                                             value="#{actualizarAdministrador.admin.correo}" required="true" />
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="username">Usuario</label>
+                                <h:inputText class="form-control" a:placeholder="Usuario" id="username" 
+                                             value="#{actualizarAdministrador.admin.usuario}" required="true" />
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="password">Contraseña</label>
+                                <h:inputText class="form-control" a:placeholder="Contraseña" id="password" 
+                                             value="#{actualizarAdministrador.admin.password}" required="true" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <h:link outcome="index.xhtml" 
+                           class="btn btn-secondary">Cancelar</h:link>
+                        <h:commandButton type="submit" 
+                                         class="btn btn-primary" 
+                                         value="Guardar"
+                                         action="#{actualizarAdministrador.actualizar()}"/>
+                    </div>
+                </h:form>
+            </div>
+        </div>
+    </body>
+</html>

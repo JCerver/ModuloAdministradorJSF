@@ -13,7 +13,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
@@ -41,7 +40,7 @@ public class ListarPlatillos {
     // Para los filtros
     private String filter;
     private String filterName = null;
-    private String seccion;
+    private String seccion = null;
     
     public ListarPlatillos()throws SQLException, ClassNotFoundException {
         gestorPlatilloBD = new GestorPlatilloBD();
@@ -53,13 +52,11 @@ public class ListarPlatillos {
     public void listar() {
         if (platillos == null) {
             platillos = gestorPlatilloBD.getPlatillos();
+            seccion = "platillos";
         }
         listaCategorias = gestorCategoriaPlatilloBD.getCategoriasPlatillos();
         listaPlatillosDelDia = gestorPlatilloDelDiaBD.getPlatillosDelDia();
         categorias = gestorCategoriaPlatilloBD.getCategoriasPlatillos();
-        seccion = "platillos";
-        HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
-                .getExternalContext().getSession(true);
     }
 
     public void buscar() throws IOException {
@@ -92,6 +89,14 @@ public class ListarPlatillos {
             Logger.getLogger(ListarPlatillos.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    public void cambiarSeccion(String seccion){
+        this.seccion = seccion;
+        try {
+            this.redirigir("");
+        } catch (IOException ex) {
+            Logger.getLogger(ListarPlatillos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     public void redirigir(String destino) throws IOException{
         ExternalContext context = FacesContext.getCurrentInstance()
                 .getExternalContext();
@@ -101,7 +106,6 @@ public class ListarPlatillos {
         }else{
            context.redirect(destino); 
         }
-        
     }
     public boolean esPlatilloDelDia(int id){
         for (PlatilloDelDia platilloDia : listaPlatillosDelDia) {
