@@ -16,10 +16,10 @@ import java.sql.SQLException;
 public class ConectaBD {
 
     private static ConectaBD instancia;
-
+ 
     private static String bd = "restaurante";//Nombre de la base de datos
     private String urls = "jdbc:mysql://localhost/" + bd;
-    private String usuarioDB = "isaac";
+    private String usuarioDB = "root";
     //private String usuarioDB = "fredy";
     
     private String passwordDB = "";

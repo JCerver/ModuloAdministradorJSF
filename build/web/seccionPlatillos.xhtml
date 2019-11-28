@@ -97,6 +97,7 @@
                 </div>                
                 <div class="row" style="margin-left: 6px; margin-right: 70px;">
                     <c:forEach var="platillo" items="#{listarPlatillos.platillos}">
+                         
                         <h:panelGroup class="card platillo" 
                                       style="display: flex; padding: 2px; position: relative"
                                       a:rendered="#{listarPlatillos.filter=='platillosDelDia'}">
@@ -136,11 +137,14 @@
                                 <span class="badge badge-secondary">#{platillo.id}</span>
                             </div>
                             <div class="div-delete-platillo">
-                                <a 
-                                    onclick="return confirm('¿Estás seguro de eliminar este platillo?')"
-                                    href="/EliminarPlatillo?id=#{platillo.id}">
-                                    <img src="#{request.contextPath}/css/imagenes/delete2.png" height="25px" />
-                                </a>
+                                <h:form>
+                                    <h:commandButton value="Eliminar" 
+                                                      onclick="return confirm('¿Estás seguro de eliminar este platillo?')"
+                                                      action="#{listarPlatillos.eliminar(platillo.id)}">
+                                     <img src="#{request.contextPath}/css/imagenes/delete2.png" height="25px" />   
+                                    </h:commandButton>
+                               </h:form>
+
                             </div>
                             <div class="card-img-top" style="text-align: center; padding: 10px 2px 2px 2px;">
                                 <img src="#{request.contextPath}/ObtenerImagenes?id=#{platillo.id}" width="120px" height="75px" />
@@ -156,19 +160,26 @@
                                     #{platillo.descripcion.substring(0,35)}..
                                 </h:outputText>
                                 <div>
-                                    <a href="/CargarDatosPlatillo?id=#{platillo.id}" 
-                                       class="btn btn-sm btn-primary btn-block">
-                                        Editar
-                                    </a>
+                  
+                                    
+                                    <h:form>
+                                                <h:commandButton class="btn btn-sm btn-primary btn-block d-inline  "
+                                                                 action="#{actualizarPlatillo.redirigirPlantilla('modificarPlatillo.xhtml',platillo.id)}" 
+                                                                 value="Editar" > </h:commandButton>
+                                            </h:form>
+                                    
+                                    
                                     <a a:rendered="#{listarPlatillos.esPlatilloDelDia(platillo.id)==true}"
                                        class="btn btn-sm btn-success btn-block"
                                        onclick="return confirm('¿Deseas agregar este platillo a los 9 platillos del día?');"
-                                       href="/SistemaRestauranteWeb/AgregarPlatilloDeldia?idPlatillo=#{platillo.id}">
+                                       href="/SistemaRestauranteWeb/AgregarPlatilloDeldia?idPlatillo=#{platillo.id}"
+                                      >
                                         <span style="font-size: 13px"><i class="fas fa-plus"></i> Platillos del día</span>
                                     </a>
                                 </div>
                             </div>
                         </h:panelGroup>
+                        
                     </c:forEach>
                 </div>
             </div>
@@ -178,6 +189,7 @@
      aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <h:form enctype="multipart/form-data" class="modal-content">
+            
             <div class="modal-header" >
                 <h4 class="modal-title" id="exampleModalCenterTitle">
                     <span style="position: relative">
@@ -202,47 +214,46 @@
                             Subir una foto
                         </label>
                         <input class="fileUpload" type="file" id="foto" name="foto"
-                               onchange="document.getElementById('imgg').src = window.URL.createObjectURL(this.files[0])" />
+                               onchange="document.getElementById('imgg').src = window.URL.createObjectURL(this.files[0])" value="#{registrarPlatillo.imagen}"/>
                     </div>
                     <div class="form-group col-md-12">
                         <label for="nombre">Nombre</label>
-                        <input type="text" class="form-control" 
-                               placeholder="Nombre del platillo"
+                        <h:inputText class="form-control" 
+                               a:placeholder="Nombre del platillo"
                                id="nombre"
-                               name="nombre"
-                               required="true" />
+                               required="true" 
+                               value="#{registrarPlatillo.nombre}"/>
                     </div>
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-6"> 
                         <label for="nombre">Categoría</label>
-                        <select class="form-control" name="categoria">
-                            <!--<%
-                                for (CategoriaPlatillo categoria : categorias) {
-                            %>
-                            <option value="<%=categoria.getCategoria()%>"><%=categoria.getCategoria()%></option>
-                            <%  }
-                            %> -->
-                        </select>
+                        <h:selectOneMenu class="form-control" value="#{registrarPlatillo.categoria}">
+                          
+                            <f:selectItem itemValue = "Bebidas" itemLabel = "Bebidas" />
+                            <f:selectItem itemValue = "Comidas" itemLabel = "Comidas" />
+                            <f:selectItem itemValue = "Postres" itemLabel = "Postres" />
+                            
+                        </h:selectOneMenu>>
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="precio">Precio</label>
-                        <input type="number" class="form-control" 
-                               placeholder="Precio"
+                        <label for="precio">Precio</label> 
+                        <h:inputText class="form-control" 
+                               a:placeholder="Precio"
                                id="precio"
-                               name="precio"
-                               step="0.01"
-                               min="1"
-                               required="true" />
+                               required="true"
+                               value="#{registrarPlatillo.precio}"/>
                     </div>
                     <div class="form-group col-md-12">
                         <label for="nombre">Descripción</label>
-                        <textarea class="form-control" name="descripcion" placeholder="Descripción">
-                        </textarea>
+                        <h:inputTextarea class="form-control" a:placeholder="Descripción" value="#{registrarPlatillo.descripcion}"/>
+                        
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                <button type="submit" class="btn btn-primary">Añadir</button>
+                <h:commandButton value="Añadir" type="submit" class="btn btn-primary"
+                                 action="#{registrarPlatillo.agregarPlatillo()}"/>
+                
             </div>
         </h:form>
     </div>

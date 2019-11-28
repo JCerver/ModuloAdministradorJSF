@@ -22,6 +22,7 @@ import modelo.CategoriaPlatillo;
 import modelo.Platillo;
 import modelo.PlatilloDelDia;
 
+
 @ManagedBean (name="listarPlatillos")
 @SessionScoped
 public class ListarPlatillos {
@@ -36,6 +37,7 @@ public class ListarPlatillos {
     private Collection<CategoriaPlatillo> categorias;
     private List<PlatilloDelDia> listaPlatillosDelDia;
     private List<CategoriaPlatillo> listaCategorias;
+    private int indexPlatillo;
     
     // Para los filtros
     private String filter;
@@ -58,6 +60,21 @@ public class ListarPlatillos {
         listaPlatillosDelDia = gestorPlatilloDelDiaBD.getPlatillosDelDia();
         categorias = gestorCategoriaPlatilloBD.getCategoriasPlatillos();
     }
+    
+    
+     public void eliminar(int id) throws IOException{
+       
+        gestorPlatilloBD.DeletePlatillo(id);
+        platillos = null;
+        this.redirigir("");
+    }
+     
+      public void editar(int id) throws IOException{
+        indexPlatillo = id;  
+        this.redirigir("modificarPlatillo.xhtml");
+    }
+    
+     
 
     public void buscar() throws IOException {
         platillos = gestorPlatilloBD.getPlatillosPorNombre(filterName);
@@ -183,5 +200,14 @@ public class ListarPlatillos {
         this.filter = filter;
     }
 
+    public int getIndexPlatillo() {
+        return indexPlatillo;
+    }
+
+    public void setIndexPlatillo(int indexPlatillo) {
+        this.indexPlatillo = indexPlatillo;
+    }
+
+    
     
 }

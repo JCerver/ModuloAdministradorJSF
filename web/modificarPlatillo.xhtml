@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+     <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <title>Editar administrador</title>
+            <link rel="stylesheet" href="#{request.contextPath}/css/stylesAdmin.css" />
+            <link rel="stylesheet" href="#{request.contextPath}/css/modal-styles.css" />
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+                  crossorigin="anonymous" />
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+                  crossorigin="anonymous" />
+    </head>
+    
+    <body style="background-color: #444">
+         
+        
+          <div class="container">
+            <div>
+                <h:form  enctype="multipart/form-data" class="modal-content"> <!--enctype="multipart/form-data" -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">
+                            <span style="position: relative">
+                                Editar platillo
+                                <div style="position: absolute; top: 0; right: -50px">
+                                    <span style="margin-top: 0px" class="badge badge-secondary">
+                                        #{actualizarPlatillo.platillo.id}</span>
+                                </div>
+                            </span>
+
+                        </h4>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="row" style="padding: 5px 10px">
+                            <div class="col-md-12" style="position: relative">
+                                <label>Imagen </label>
+                                <br/>
+                                <img id="imgg" src="" width="120px" height="75px"/>
+                                <label class="upload" for="foto">
+                                    <img src="#{request.contextPath}/css/imagenes/upload.png" height="55px"/> Cambiar foto
+                                </label>
+                                    <h:inputText class="fileUpload"  id="foto" onchange="document.getElementById('imgg').src = window.URL.createObjectURL(this.files[0])"/>
+                            </div>
+
+                            <div class="form-group col-md-12">
+                                <label for="nombre2">Nombre</label>
+                                <h:inputText  class="form-control" a:placeholder="Nombre del platillo" id="nombre2" 
+                                              value="#{actualizarPlatillo.platillo.nombre}" required="true" />
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="categoria2">Categoría</label>
+                                <h:selectOneMenu class="form-control" value="#{actualizarPlatillo.platillo.categoria}">
+                          
+                            <f:selectItem itemValue = "Bebidas" itemLabel = "Bebidas" />
+                            <f:selectItem itemValue = "Comidas" itemLabel = "Comidas" />
+                            <f:selectItem itemValue = "Postres" itemLabel = "Postres" />
+                            
+                        </h:selectOneMenu>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="precio2">Precio</label>
+                                <h:inputText class="form-control" a:placeholder="Precio" id="precio2" 
+                                             value="#{actualizarPlatillo.platillo.precio}" required="true"/>
+                            </div>
+
+                            <div class="form-group col-md-12">
+                                <label for="descripcion2">Descripción</label>
+                                <h:inputTextarea class="form-control"  id="descripcion2" a:placeholder="Descripción" required="true" value="#{actualizarPlatillo.platillo.descripcion}" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#{request.contextPath}/faces/index.xhtml" 
+                           class="btn btn-secondary">Cancelar</a>
+                           
+                      
+                        
+                         <h:commandButton value="Guardar" type="submit" class="btn btn-primary"
+                                          action="#{actualizarPlatillo.actualizarPlatillo()}" />
+                    </div>
+                </h:form>
+            </div>
+        </div>
+        
+        
+        
+        
+    </body>
+</html>
+
